@@ -31,22 +31,6 @@ namespace GH
             StateMachine(new AdminStateChangedEventArgs(prevState, newState));
         }
 
-        protected override void CloseState(string state)
-        {
-            EAdminState eState = (EAdminState)Enum.Parse(typeof(EAdminState), state);
-            switch (eState)
-            {
-                case EAdminState.Init:
-                    break;
-                case EAdminState.Running:
-                    break;
-                case EAdminState.Completed:
-                    break;
-                default:
-                    break;
-            }
-        }
-
         protected override void OpenState(string state)
         {
             EAdminState eState = (EAdminState)Enum.Parse(typeof(EAdminState), state);
@@ -59,6 +43,22 @@ namespace GH
                     break;
                 case EAdminState.Completed:
                     CompletedProgram();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        protected override void CloseState(string state)
+        {
+            EAdminState eState = (EAdminState)Enum.Parse(typeof(EAdminState), state);
+            switch (eState)
+            {
+                case EAdminState.Init:
+                    break;
+                case EAdminState.Running:
+                    break;
+                case EAdminState.Completed:
                     break;
                 default:
                     break;

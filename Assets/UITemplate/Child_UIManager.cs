@@ -9,9 +9,9 @@ namespace GH
 {
     public enum EUIPage
     {
-        Home,
-        Content,
-        End,
+        Page_Home,
+        Page_Content,
+        Page_End,
         None,
     }
 
@@ -45,8 +45,8 @@ namespace GH
         {
             return page switch
             {
-                EUIPage.Home => EAdminState.Init.ToString(),
-                EUIPage.End => EAdminState.Completed.ToString(),
+                EUIPage.Page_Home => EAdminState.Init.ToString(),
+                EUIPage.Page_End => EAdminState.Completed.ToString(),
                 _ => EAdminState.None.ToString(),
             };
         }
@@ -55,7 +55,7 @@ namespace GH
         {
             return page switch
             {
-                EUIPage.Content => EContentState.Content1.ToString(),
+                EUIPage.Page_Content => EContentState.Content_Content1.ToString(),
                 _ => EContentState.None.ToString()
             };
         }

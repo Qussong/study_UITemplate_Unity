@@ -10,7 +10,7 @@ namespace GH
 {
     public enum EContentState
     {
-        Content1,
+        Content_Content1,
         None
     }
 
@@ -19,29 +19,58 @@ namespace GH
     /// </summary>
     public class Child_ContentManager : ContentManager<Child_ContentManager>
     {
-        protected override void CloseState(string state)
+        [Header("Content : Content 1")]
+        [Tooltip("Content1 에 필요한 변수 1")]
+        [SerializeField] int a;
+        [Tooltip("Content1 에 필요한 변수 2")]
+        [SerializeField] bool b;
+
+        private void Init_Content1()
         {
-            EContentState eState = (EContentState)Enum.Parse(typeof(EContentState), state);
-            switch (eState)
-            {
-                case EContentState.Content1:
-                    break;
-                default:
-                    break;
-            }
+            a = 0;
+            b = false;
         }
+
+        public void Start()
+        {
+            Init_Content1();
+        }
+
 
         protected override void OpenState(string state)
         {
             EContentState eState = (EContentState)Enum.Parse(typeof(EContentState), state);
             switch (eState)
             {
-                case EContentState.Content1:
+                case EContentState.Content_Content1:
+                    Start_Content1();
                     break;
                 default:
                     break;
             }
         }
 
+        private void Start_Content1()
+        {
+            //
+        }
+
+        protected override void CloseState(string state)
+        {
+            EContentState eState = (EContentState)Enum.Parse(typeof(EContentState), state);
+            switch (eState)
+            {
+                case EContentState.Content_Content1:
+                    End_Content1();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void End_Content1()
+        {
+            Init_Content1();
+        }
     }
 }
